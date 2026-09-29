@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Enrollment System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Student Enrollment System</h1>
+    <p>Fill out the form below to enroll a student.</p>
+  </header>
+
+  <main>
+    <section id="enrollment-section">
+      <h2>Enrollment Form</h2>
+
+      <form id="enrollment-form" name="enrollment-form" action="#" method="post">
+
+        <div class="form-group">
+          <label for="student-id">Student ID</label>
+          <input type="text" id="student-id" name="student_id" minlength="5" required>
+        </div>
+
+        <div class="form-group">
+          <label for="prefix">Prefix (optional)</label>
+          <input type="text" id="prefix" name="prefix" minlength="2">
+        </div>
+
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first_name" minlength="3" required>
+        </div>
+
+        <div class="form-group">
+          <label for="middle-name">Middle Name (optional)</label>
+          <input type="text" id="middle-name" name="middle_name" minlength="2">
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last_name" minlength="2" required>
+        </div>
+
+        <div class="form-group">
+          <label for="suffix">Suffix (optional)</label>
+          <input type="text" id="suffix" name="suffix" minlength="2">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Course</label>
+          <select id="course" name="course" required>
+            <option value="">-- Select Course --</option>
+            <option value="BSIT">BSIT</option>
+            <option value="BSCS">BSCS</option>
+            <option value="BMMA">BMMA</option>
+            <option value="BSAIS">BSAIS</option>
+          </select>
+        </div>
+
+        <!-- Shown when BSIT is selected -->
+        <div class="form-group" id="major-group" hidden>
+          <label for="major">Major</label>
+          <select id="major" name="major">
+            <option value="">-- Select Major --</option>
+            <option value="Net Sec">Net Sec</option>
+            <option value="Web Tech">Web Tech</option>
+            <option value="ERP">ERP</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="year-level">Year Level</label>
+          <select id="year-level" name="year_level" required>
+            <option value="">-- Select Year Level --</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+          </select>
+        </div>
+
+        <button type="submit" id="submit-button">Submit</button>
+
+      </form>
+    </section>
+
+    <section id="submitted-data-section">
+      <h2>Submitted Data</h2>
+
+      <table id="enrollment-table">
+        <thead>
+          <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Course</th>
+            <th scope="col">Major</th>
+            <th scope="col">Year Level</th>
+          </tr>
+        </thead>
+        <tbody id="enrollment-table-body">
+          <!-- Submitted enrollment records will appear here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Student Enrollment System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

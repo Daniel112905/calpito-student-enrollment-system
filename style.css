@@ -1,0 +1,338 @@
+/*  1. General Styles*/
+:root {
+  /* Colors */
+  --color-primary: #1e3a8a;        /* dark blue */
+  --color-primary-dark: #172c6b;
+  --color-secondary: #3b82f6;      /* lighter blue */
+  --color-secondary-light: #dbeafe;
+  --color-bg: #f3f4f6;             /* light gray */
+  --color-surface: #ffffff;
+  --color-text: #1f2937;           /* dark gray */
+  --color-text-muted: #6b7280;
+  --color-border: #cbd5e1;
+  --color-error: #dc2626;
+  --color-error-bg: #fef2f2;
+  --color-success: #16a34a;
+  --color-success-bg: #f0fdf4;
+
+  /* Layout */
+  --radius: 8px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --container-width: 900px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden; /* prevent horizontal page overflow */
+}
+
+/* Ensure the hidden attribute always works, even on styled elements */
+[hidden] {
+  display: none !important;
+}
+
+/* Header */
+header {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-align: center;
+  padding: 32px 16px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0;
+  color: var(--color-secondary-light);
+}
+
+/* Centered main container */
+main {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* Card-style sections */
+main section {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+main section h2 {
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-secondary);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 16px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+}
+/* 2. Form Styles */
+
+/* Two-column layout on larger screens */
+#enrollment-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* lets inputs shrink inside the grid */
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+/* Optional message helpers (can be used by script.js) */
+.error-message {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--color-error);
+}
+
+.success-message {
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: var(--radius);
+  color: var(--color-success);
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success);
+}
+
+/* 3. Input Styles (text, email, select) */
+
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: #f9fafb;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+select {
+  cursor: pointer;
+}
+
+input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Hover */
+input[type="text"]:hover,
+input[type="email"]:hover,
+select:hover {
+  border-color: var(--color-secondary);
+}
+
+/* Focus effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+}
+
+/* Invalid / error fields (only after the user has interacted) */
+input:user-invalid,
+select:user-invalid,
+input.error,
+select.error {
+  background-color: var(--color-error-bg);
+  border-color: var(--color-error);
+}
+
+input:user-invalid:focus,
+select:user-invalid:focus,
+input.error:focus,
+select.error:focus {
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Valid fields (optional class for script.js) */
+input.success,
+select.success {
+  border-color: var(--color-success);
+}
+
+/*  4. Button Styles*/
+
+button,
+#submit-button {
+  grid-column: 1 / -1; /* full width row inside the form grid */
+  justify-self: start;
+  padding: 12px 32px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+button:hover,
+#submit-button:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(30, 58, 138, 0.3);
+}
+
+button:active,
+#submit-button:active {
+  background-color: var(--color-primary-dark);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+button:focus-visible,
+#submit-button:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+/* 5. Table Styles */
+
+/* The section scrolls horizontally if the table is too wide */
+#submitted-data-section {
+  overflow-x: auto;
+}
+
+#enrollment-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+#enrollment-table th,
+#enrollment-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+#enrollment-table thead th {
+  color: #ffffff;
+  background-color: var(--color-primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#enrollment-table thead th:first-child {
+  border-top-left-radius: var(--radius);
+}
+
+#enrollment-table thead th:last-child {
+  border-top-right-radius: var(--radius);
+}
+
+#enrollment-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+#enrollment-table tbody tr:hover {
+  background-color: var(--color-secondary-light);
+}
+
+/* 
+   6. Responsive Design */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  main {
+    padding: 24px 12px;
+  }
+
+  main section {
+    padding: 22px 18px;
+  }
+
+  #enrollment-form {
+    gap: 18px 16px;
+  }
+}
+
+/* Smartphones: single-column form */
+@media (max-width: 600px) {
+  header {
+    padding: 24px 12px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  main section {
+    padding: 18px 14px;
+    margin-bottom: 24px;
+  }
+
+  #enrollment-form {
+    grid-template-columns: 1fr;
+  }
+
+  /* Full-width button on mobile */
+  button,
+  #submit-button {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  #enrollment-table th,
+  #enrollment-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
